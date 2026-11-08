@@ -9,6 +9,15 @@ export default function BHYTPage() {
     <TinhTienBHYT />
     <section className="max-w-5xl mx-auto px-4 pb-6"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">3 Cái Mất Lớn Nhất Khi Để Thẻ Hết Hạn</h2><div className="grid md:grid-cols-3 gap-4 mt-6"><div className="border rounded-2xl p-5"><h3 className="font-bold text-lg">1. Mất tiền viện phí</h3><p className="mt-2">Có thẻ thì Nhà nước hỗ trợ 80% - 100%, hết thẻ thì mình tự trả hết, có khi lên đến hàng chục triệu đấy ạ.</p></div><div className="border rounded-2xl p-5"><h3 className="font-bold text-lg">2. Mất mốc 5 năm liên tục</h3><p className="mt-2">Quá hạn trên 90 ngày là bị xóa hết thời gian tích lũy trước đấy, lại phải đóng lại từ đầu ạ.</p></div><div className="border rounded-2xl p-5"><h3 className="font-bold text-lg">3. Phải chờ 30 ngày</h3><p className="mt-2">Đóng muộn là phải chờ đủ 30 ngày thẻ mới dùng lại được, trong 30 ngày đấy nhà mình không được bảo vệ gì cả ạ.</p></div></div></section>
     <FormNhacHan />
-    <section className="max-w-4xl mx-auto pb-12 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">5 Câu Bà Con Hay Hỏi Em Nhất Về BHYT</h2><div className="mt-6 space-y-3">{FAQ_BHYT.map((f,i)=>(<details key={i} className="border rounded-xl p-4"><summary className="font-bold cursor-pointer">{f.hoi}</summary><p className="mt-2 text-lg leading-relaxed">{f.dap}</p></details>))}</div><div className="text-center mt-8"><a href="/" className="underline text-blue-700">Quay về trang chủ ạ</a> <span className="mx-2">|</span> <a href="/bhxh" className="underline text-blue-700">Sang trang BHXH để có lương hưu ạ</a></div></section>
+    <section className="max-w-4xl mx-auto pb-12 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">5 Câu Bà Con Hay Hỏi Em Nhất Về BHYT</h2><div className="mt-6 space-y-3">{FAQ_BHYT.map((f,i)=>(<details key={i} className="border rounded-xl p-4"><summary className="font-bold cursor-pointer">{f.hoi}</summary><p className="mt-2 text-lg leading-relaxed">{f.dap}</p></details>))}</div>
+    <div className="text-center mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+  <a href="/" className="inline-block border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2.5 px-6 rounded-lg transition duration-200">
+    Quay về trang chủ
+  </a> 
+  <a href="/bhxh" className="inline-block border border-blue-600 hover:bg-blue-50 text-blue-600 font-medium py-2.5 px-6 rounded-lg transition duration-200">
+    Sang trang BHXH để nhận lương hưu
+  </a>
+</div>
+</section>
   </main>);
 }

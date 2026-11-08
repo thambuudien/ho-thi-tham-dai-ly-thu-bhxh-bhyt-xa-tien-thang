@@ -28,20 +28,20 @@ export default function BaoChiNoiVeEm() {
           <blockquote className="mt-4 border-l-4 border-yellow-400 pl-4 italic text-lg leading-relaxed">
             “Trong khó khăn có cơ hội, và người ở lại cuối cùng là người chiến thắng” - Chị Thắm nhắn gửi.
           </blockquote>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6 text-center">
-  <div class="bg-white rounded-xl p-3 shadow-sm">
-    <p class="text-2xl font-bold text-[#0B4AA2]">10.000</p>
-    <p class="text-sm text-gray-600">Người tiếp cận Fanpage</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mt-6 text-center">
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <p className="text-2xl font-bold text-[#0B4AA2]">10.000</p>
+    <p className="text-sm text-gray-600">Người tiếp cận Fanpage</p>
   </div>
   
-  <div class="bg-white rounded-xl p-3 shadow-sm">
-    <p class="text-2xl font-bold text-[#0B4AA2]">15.000</p>
-    <p class="text-sm text-gray-600">Lượt thích TikTok</p>
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <p className="text-2xl font-bold text-[#0B4AA2]">15.000</p>
+    <p className="text-sm text-gray-600">Lượt thích TikTok</p>
   </div>
   
-  <div class="bg-white rounded-xl p-3 shadow-sm">
-    <p class="text-2xl font-bold text-[#0B4AA2]">4 nhóm</p>
-    <p class="text-sm text-gray-600">Zalo, 200 thành viên / nhóm</p>
+  <div className="bg-white rounded-xl p-3 shadow-sm">
+    <p className="text-2xl font-bold text-[#0B4AA2]">4 nhóm</p>
+    <p className="text-sm text-gray-600">Zalo, 200 thành viên / nhóm</p>
   </div>
 </div>
 

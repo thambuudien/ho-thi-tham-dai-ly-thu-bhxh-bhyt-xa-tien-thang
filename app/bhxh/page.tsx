@@ -5,6 +5,16 @@ export default function BHXHPage() {
   return (<main className="min-h-screen bg-white">
     <div className="bg-[#0B4AA2] text-white py-12 px-4 text-center"><h1 className="text-3xl md:text-4xl font-bold">Đóng BHXH Tự Nguyện Để Sau Này Có Lương Hưu</h1><p className="mt-4 text-lg max-w-3xl mx-auto">Bà con ơi, đóng BHXH tự nguyện là để sau này mình có lương hưu hàng tháng, với được cấp thẻ BHYT miễn phí đấy ạ. Bà con đóng bao nhiêu, hưởng bấy nhiêu, không lo mất đâu ạ.</p><a href={CONTACT.zaloLink} className="inline-block mt-6 bg-yellow-400 text-black px-8 py-3 rounded-full font-bold">Nhắn Zalo hỏi em Thắm ạ</a></div>
     <section className="max-w-5xl mx-auto py-10 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">Bà Con Chọn Mức Đóng Nào Thì Hợp Với Nhà Mình?</h2><div className="grid md:grid-cols-2 gap-4 mt-6">{MUC_DONG.map((m,i)=>(<div key={i} className="border rounded-2xl p-5"><p className="text-2xl font-bold text-red-600">{m.muc.toLocaleString("vi-VN")}đ / tháng</p><p className="mt-2 font-medium">{m.ten}</p><p className="mt-1 text-gray-700">Dự kiến: {m.luongDuKien}</p></div>))}</div><p className="text-center mt-4 text-gray-600">Con số trên là để bà con tham khảo thôi ạ. Bà con nhắn Zalo cho em, em tính chính xác cho nhà mình ạ. Nhà nước còn hỗ trợ 30% cho hộ nghèo, 25% cho hộ cận nghèo, 10% cho các hộ khác đấy ạ.</p></section>
-    <section className="max-w-4xl mx-auto pb-12 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">5 Câu Bà Con Hay Hỏi Em Nhất Về BHXH</h2><div className="mt-6 space-y-3">{FAQ_BHXH.map((f,i)=>(<details key={i} className="border rounded-xl p-4"><summary className="font-bold cursor-pointer">{f.hoi}</summary><p className="mt-2 text-lg leading-relaxed">{f.dap}</p></details>))}</div><div className="text-center mt-8"><a href="/" className="underline text-blue-700">Quay về trang chủ ạ</a> <span className="mx-2">|</span> <a href="/bhyt" className="underline text-blue-700">Sang trang gia hạn BHYT ạ</a></div></section>
+    <section className="max-w-4xl mx-auto pb-12 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">5 Câu Bà Con Hay Hỏi Em Nhất Về BHXH</h2><div className="mt-6 space-y-3">{FAQ_BHXH.map((f,i)=>(<details key={i} className="border rounded-xl p-4"><summary className="font-bold cursor-pointer">{f.hoi}</summary><p className="mt-2 text-lg leading-relaxed">{f.dap}</p></details>))}</div>
+    <div className="text-center mt-8 flex flex-col sm:flex-row justify-center gap-4">
+  <a href="/" className="inline-block border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-lg transition duration-200">
+    Quay về trang chủ
+  </a> 
+  <a href="/bhyt" className="inline-block border border-blue-600 hover:bg-blue-50 text-blue-600 font-medium py-2 px-6 rounded-lg transition duration-200">
+    Sang trang gia hạn BHYT
+  </a>
+</div>
+
+    </section>
   </main>);
 }

@@ -83,7 +83,7 @@ const doiNam = (namMoi: string) => {
           <label className="flex gap-2 items-center mt-2"><input type="checkbox" checked={form.khongNho} onChange={e=>setForm({...form, khongNho:e.target.checked})} /> Tôi không nhớ</label>
           <button className="w-full mt-5 bg-green-600 text-white py-3 rounded-full font-bold text-lg">Đăng ký nhắc hạn - Miễn phí ạ</button>
           {daGui && <p className="mt-3 text-green-700 font-medium">Em nhận được rồi ạ, em sẽ nhắn Zalo cho bà con ngay ạ.</p>}
-          <p className="mt-3 text-sm text-gray-600">Số điện thoại với CCCD của bà con, em chỉ dùng để nhắc hạn thẻ BHYT thôi ạ, em cam kết không dùng vào việc khác đâu ạ.</p>
+          <p className="mt-3 text-sm text-gray-600">Số điện thoại của bà con, em chỉ dùng để nhắc hạn thẻ BHYT thôi ạ.</p>
         </form>
         <div className="bg-white rounded-2xl p-6 shadow">
           <h3 className="text-xl font-bold">Bà con với báo chí nói gì về em Thắm?</h3>
