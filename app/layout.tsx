@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // GA: Chi lay tu .env, KHONG de ma cung trong code nua - de lo ma cung ra la nguoi ta dung chua duoc dau a
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-T9ZBGCYC48";
   return (
     <html lang="vi">
       <body
