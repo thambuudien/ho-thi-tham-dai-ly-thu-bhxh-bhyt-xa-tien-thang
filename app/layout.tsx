@@ -28,7 +28,10 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
     maximumScale: 5,
-    themeColor: "#0B4AA2",
+    themeColor: [
+      { media: "(prefers-color-scheme: light)", color: "#0B4AA2" },
+      { media: "(prefers-color-scheme: dark)", color: "#0B4AA2" }
+    ],
   },
   openGraph: {
     type: "website",
