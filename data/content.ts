@@ -1,6 +1,6 @@
 export const HERO = {
   tieuDe: "Chị Thắm Bưu Điện đây ạ - Giữ thẻ BHYT không bị gián đoạn, giữ lương hưu cho tuổi già",
-  moTa: "Em là Hồ Thị Thắm, Đại lý thu BHXH, BHYT chính thức - Bảo hiểm xã hội cơ sở Mê Linh, ngồi ở Bưu điện Văn hóa xã Tự Lập, Mê Linh, Hà Nội. Bà con đăng ký một lần, em nhắc hạn cho cả nhà, miễn phí ạ.",
+  moTa: "Em là Hồ Thị Thắm, Đại lý thu BHXH, BHYT chính thức - Bảo hiểm xã hội cơ sở Mê Linh, ngồi ở Bưu điện Văn hóa xã Tự Lập - thôn Phú Mỹ, xã Tiến Thắng, Hà Nội. Bà con đăng ký một lần, em nhắc hạn cho cả nhà, miễn phí ạ.",
   nutBHYT: "Tôi cần gia hạn BHYT",
   nutBHXH: "Tôi muốn đóng BHXH để có lương hưu",
   ghiChu: "Em đã được Báo Bưu điện Việt Nam viết bài. Bà con xã Tiến Thắng - Hà Nội cứ yên tâm ạ.",

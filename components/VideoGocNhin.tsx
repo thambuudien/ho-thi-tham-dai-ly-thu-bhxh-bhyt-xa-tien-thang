@@ -9,7 +9,7 @@ export default function VideoGocNhin() {
           Khác với các trang website hay fanpage của Tổng công ty, chương trình này giới thiệu về một website cá nhân của nhân vật khách mời đặc biệt - là em Thắm đấy ạ.
         </p>
         <blockquote className="mt-5 bg-white/10 rounded-2xl p-5 italic text-lg leading-relaxed text-center">
-          “Quý vị và các bạn hãy cùng tôi truy cập vào website: https://blog.hotham.vn/ để cùng xem có điều gì đặc biệt ở website này nhé.
+          “Quý vị và các bạn hãy cùng tôi truy cập vào website: <a href="https://blog.hotham.vn/" target = "_blank">blog.hotham.vn</a> để cùng xem có điều gì đặc biệt ở website này nhé.
           Chúng ta hãy cùng tìm hiểu về một website cá nhân của nhân vật khách mời đặc biệt.”
           <br /><span className="not-italic font-bold text-sm">- Trích lời dẫn chương trình Góc Nhìn Vietnam Post #6</span>
         </blockquote>
