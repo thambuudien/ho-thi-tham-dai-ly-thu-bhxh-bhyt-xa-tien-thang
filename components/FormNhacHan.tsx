@@ -39,40 +39,37 @@ const doiNam = (namMoi: string) => {
           <div>
   <label className="font-bold">Thẻ BHYT của bà con hết hạn tháng nào ạ?</label>
   <div className="flex gap-2 mt-1">
-    <select
-      disabled={form.khongNho}
-      value={thangDaChon}
-      onChange={(e) => doiThang(e.target.value)}
-      className="flex-1 border rounded-lg px-3 py-3 text-base bg-white disabled:bg-gray-100"
-    >
-      <option value="">-- Chọn tháng --</option>
-      <option value="01">Tháng 1</option>
-      <option value="02">Tháng 2</option>
-      <option value="03">Tháng 3</option>
-      <option value="04">Tháng 4</option>
-      <option value="05">Tháng 5</option>
-      <option value="06">Tháng 6</option>
-      <option value="07">Tháng 7</option>
-      <option value="08">Tháng 8</option>
-      <option value="09">Tháng 9</option>
-      <option value="10">Tháng 10</option>
-      <option value="11">Tháng 11</option>
-      <option value="12">Tháng 12</option>
-    </select>
-    <select
-      disabled={form.khongNho}
-      value={namDaChon}
-      onChange={(e) => doiNam(e.target.value)}
-      className="flex-1 border rounded-lg px-3 py-3 text-base bg-white disabled:bg-gray-100"
-    >
-      <option value="">-- Chọn năm --</option>
-      <option value="2026">Năm 2026</option>
-      <option value="2027">Năm 2027</option>
-      <option value="2028">Năm 2028</option>
-      <option value="2029">Năm 2029</option>
-      <option value="2030">Năm 2030</option>
-    </select>
-  </div>
+  <select
+    disabled={form.khongNho}
+    value={thangDaChon}
+    onChange={(e) => doiThang(e.target.value)}
+    className="flex-1 min-h-[48px] border border-gray-300 rounded-xl px-3 py-2 text-base sm:text-sm bg-white disabled:bg-gray-100 disabled:text-gray-400 appearance-none touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 active:bg-gray-50"
+  >
+    <option value="">-- Chọn tháng --</option>
+    {Array.from({ length: 12 }, (_, i) => {
+      const month = String(i + 1).padStart(2, '0');
+      return (
+        <option key={month} value={month}>
+          Tháng {i + 1}
+        </option>
+      );
+    })}
+  </select>
+
+  <select
+    disabled={form.khongNho}
+    value={namDaChon}
+    onChange={(e) => doiNam(e.target.value)}
+    className="flex-1 min-h-[48px] border border-gray-300 rounded-xl px-3 py-2 text-base sm:text-sm bg-white disabled:bg-gray-100 disabled:text-gray-400 appearance-none touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-500 active:bg-gray-50"
+  >
+    <option value="">-- Chọn năm --</option>
+    {[2026, 2027, 2028, 2029, 2030].map((year) => (
+      <option key={year} value={year}>
+        Năm {year}
+      </option>
+    ))}
+  </select>
+</div>
   {form.thangHetHan && !form.khongNho && (
     <p className="text-sm text-green-700 mt-1">
       Bà con đã chọn: Tháng {parseInt(thangDaChon)} năm {namDaChon} ạ.
