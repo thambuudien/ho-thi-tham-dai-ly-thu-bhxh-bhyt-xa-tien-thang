@@ -1,42 +1,35 @@
-import React from 'react';
-import { Metadata } from 'next';
-import HeaderBanner from '@/components/HeaderBanner';
-import HeroSection from '@/components/HeroSection';
-import QuickLinks from '@/components/QuickLinks';
-import Footer from '@/components/Footer';
-import MainDashboardContainer from '@/components/MainDashboardContainer';
-import { AGENT_CONFIG } from '@/config/agent';
-
-// CẤU HÌNH METADATA CHUẨN SEO GOOGLE & ZALO
-export const metadata: Metadata = {
-  title: AGENT_CONFIG.seo.homeTitle,
-  description: AGENT_CONFIG.seo.homeDesc,
-  alternates: {
-    canonical: AGENT_CONFIG.contact.website,
-  },
-  openGraph: {
-    title: AGENT_CONFIG.seo.homeTitle,
-    description: AGENT_CONFIG.seo.homeDesc,
-    url: AGENT_CONFIG.contact.website,
-    siteName: `Đại lý BHXH BHYT Hồ Thị Thắm`,
-    locale: 'vi_VN',
-    type: 'website',
-  },
+import ThanhTren from "../components/ThanhTren";
+import Hero from "../components/Hero";
+import GioiThieu from "../components/GioiThieu";
+import TinhTienBHYT from "../components/TinhTienBHYT";
+import BaCaiMat from "../components/BaCaiMat";
+import FormNhacHan from "../components/FormNhacHan";
+import FAQ from "../components/FAQ";
+import BHXH from "../components/BHXH";
+import Footer from "../components/Footer";
+import VideoGocNhin from "../components/VideoGocNhin";
+import BaoChiNoiVeEm from "../components/BaoChiNoiVeEm";
+import VideoCamHung from "../components/VideoCamHung";
+export const metadata = {
+  title: "Chị Thắm Bưu Điện - Gia Hạn BHYT, Đóng BHXH Tự Nguyện | Mê Linh, Hà Nội",
+  description: "Chị Thắm Bưu Điện đây ạ - Đại lý thu BHXH, BHYT mã 0129BD0729 ở Bưu điện VHX Tự Lập. Đăng ký một lần, em nhắc hạn BHYT cho cả nhà, miễn phí. Đóng online 5 phút, biên lai gửi về Zalo ngay ạ.",
 };
-
-export default function BHYTLandingPage() {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col justify-between">
-      <div>
-        <HeaderBanner />
-        <HeroSection />
-        
-        <main className="container mx-auto px-4 py-8 max-w-7xl space-y-6">
-          <QuickLinks />
-          <MainDashboardContainer />
-        </main>
-      </div>
+    <main className="min-h-screen bg-white pb-20 md:pb-0">
+      <ThanhTren />
+      <Hero />
+      <VideoGocNhin />
+      <GioiThieu />
+      <BaoChiNoiVeEm />
+      <VideoCamHung />
+      <TinhTienBHYT />
+      <BaCaiMat />
+      <FormNhacHan />
+      <FAQ />
+      <BHXH />
       <Footer />
-    </div>
+      <a href="https://zalo.me/0978333963" className="hidden md:block fixed bottom-4 right-4 z-50 bg-green-600 text-white px-5 py-3 rounded-full font-bold shadow-lg">Nhắn Zalo cho em</a>
+    </main>
   );
 }

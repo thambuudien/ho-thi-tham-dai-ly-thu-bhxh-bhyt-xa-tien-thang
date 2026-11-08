@@ -1,0 +1,1 @@
+export const BAO_CHI = { tieuDe: "Nữ nhân viên Bưu điện - Văn hóa xã đa kênh", nguon: "VNPost - Tổng công ty Bưu điện Việt Nam", ngay: "18/04/2023", linkGoc: "https://vnpost.vn/nguoi-buu-dien/nu-nhan-vien-buu-dien-van-hoa-xa-da-kenh", linkFacebook: "https://l.facebook.com/l.php?u=https%3A%2F%2Fvnpost.vn%2Fnguoi-buu-dien%2Fnu-nhan-vien-buu-dien-van-hoa-xa-da-kenh" };

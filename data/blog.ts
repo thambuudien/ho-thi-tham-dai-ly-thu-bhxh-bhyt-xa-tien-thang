@@ -1,0 +1,123 @@
+export type BaiViet = { slug: string; tieuDe: string; moTa: string; ngay: string; noiDung: string[]; tuKhoa: string };
+export const BAI_VIET: BaiViet[] = [
+  {
+    slug: "gia-han-bhyt-me-linh-nhanh-chong",
+    tieuDe: "Gia Hạn BHYT Ở Mê Linh: Bà Con Cần Biết 3 Điều Này Để Không Mất Quyền Lợi",
+    moTa: "Bà con ở Mê Linh mà để thẻ BHYT quá hạn trên 90 ngày là mất mốc 5 năm liên tục, phải chờ 30 ngày mới dùng lại được đấy ạ. Em Thắm hướng dẫn bà con cách gia hạn nhanh trong 5 phút.",
+    ngay: "08/11/2026",
+    tuKhoa: "gia hạn BHYT Mê Linh",
+    noiDung: [
+      "Bà con ơi, em là Thắm ở Bưu điện Văn hóa xã Tự Lập đây ạ. Dạo này nhiều bà con nhắn hỏi em là thẻ BHYT sắp hết hạn thì gia hạn ở đâu, có phải lên tận huyện không. Em trả lời luôn là không cần đâu ạ, bà con cứ nhắn Zalo cho em là em làm online cho bà con được ạ.",
+      "Bà con nhớ giúp em 3 điều này nhé. Một là đừng để quá hạn trên 90 ngày, vì quá là mất mốc 5 năm liên tục, uổng lắm ạ. Hai là đóng muộn là phải chờ 30 ngày thẻ mới dùng lại được, trong 30 ngày đấy mình không được bảo vệ gì cả. Ba là đóng ở bưu điện với đóng ở xã là như nhau, cùng hệ thống, cùng mức giá, nhưng ở bưu điện em gửi biên lai về Zalo ngay cho bà con kiểm tra.",
+      "Bà con nào chưa nhớ tháng hết hạn thẻ thì cứ nhắn Zalo 0978 333 963 cho em, em tra cứu giúp bà con, rồi đến hạn em nhắc cho, miễn phí ạ.",
+    ],
+  },
+  {
+    slug: "dong-bhxh-tu-nguyen-de-co-luong-huu",
+    tieuDe: "Đóng BHXH Tự Nguyện Để Sau Này Có Lương Hưu: Bà Con Đóng Mức Nào Thì Hợp?",
+    moTa: "Đóng BHXH tự nguyện là để sau này mình có lương hưu hàng tháng với thẻ BHYT miễn phí. Em Thắm tính giúp bà con xem đóng mức nào thì hợp với nhà mình nhất ạ.",
+    ngay: "07/11/2026",
+    tuKhoa: "đóng BHXH tự nguyện Mê Linh",
+    noiDung: [
+      "Bà con ơi, nhiều bà con hỏi em là giờ không đi công ty nữa, ở nhà buôn bán thì có đóng BHXH được không. Em trả lời là được ạ, đóng BHXH tự nguyện ở bưu điện chỗ em là được ạ.",
+      "Bà con đóng bao nhiêu thì hưởng bấy nhiêu. Mức thấp nhất bây giờ là 231.000đ một tháng. Bà con đóng mức này đều 20 năm thì sau này lương hưu khoảng hơn 1 triệu một tháng, với được cấp thẻ BHYT miễn phí nữa ạ. Nhà nước còn hỗ trợ 30% cho hộ nghèo, 25% cho hộ cận nghèo, 10% cho các hộ khác đấy ạ.",
+      "Bà con nào đang phân vân không biết chọn mức nào thì cứ nhắn Zalo cho em, em tính giúp bà con xem nhà mình đóng mức nào thì vừa sức mà sau này lương hưu vẫn đủ sống ạ.",
+    ],
+  },
+  {
+    slug: "mua-bhyt-o-buu-dien-nhanh-gon",
+    tieuDe: "Mua BHYT Ở Bưu Điện Có Được Không? Được Ạ, Chỉ Mất 5 Phút Thôi",
+    moTa: "Bà con hỏi em nhiều lắm: Mua BHYT ở bưu điện có được không? Em trả lời là được ạ, bà con không cần lên xã, không cần lên huyện đâu ạ.",
+    ngay: "06/11/2026",
+    tuKhoa: "mua BHYT ở bưu điện",
+    noiDung: [
+      "Bà con ơi, em khẳng định luôn là mua BHYT ở bưu điện được ạ. Bưu điện xã mình có hợp đồng đại lý thu với cơ quan BHXH rồi, nên bà con mua ở đây là hợp lệ, có biên lai đầy đủ ạ.",
+      "Cách mua thì đơn giản lắm ạ. Bước 1, bà con nhắn Zalo cho em hoặc đến Bưu điện VHX Tự Lập, ngay cạnh Trạm Y tế xã mình ấy. Bước 2, em tra cứu CCCD cho bà con, tính tiền hộ gia đình cho bà con. Bước 3, bà con chuyển khoản hoặc đóng tiền mặt, em gửi biên lai điện tử về Zalo ngay ạ. Chỉ 5 phút là xong thôi ạ.",
+      "Bà con đừng để đến lúc ốm mới đi mua, vì mua xong phải chờ 30 ngày thẻ mới dùng được đấy ạ. Cứ nhắn em trước để em nhắc hạn cho cả nhà mình ạ.",
+    ],
+  },
+  {
+    slug: "nghi-viec-co-nen-dong-tiep-bhxh",
+    tieuDe: "Nghỉ Việc Ở Công Ty Rồi, Có Nên Đóng Tiếp BHXH Không? Nên Ạ, Đừng Bỏ",
+    moTa: "Nhiều bà con nghỉ việc ở công ty rồi bỏ luôn BHXH, thế là mất hết thời gian đã đóng trước đấy. Em Thắm khuyên bà con nên đóng tiếp để giữ lương hưu ạ.",
+    ngay: "05/11/2026",
+    tuKhoa: "nghỉ việc đóng tiếp BHXH",
+    noiDung: [
+      "Bà con ơi, em gặp nhiều trường hợp bà con đi công ty được 8-10 năm, rồi nghỉ việc về nhà, bỏ luôn không đóng nữa. Thế là uổng lắm ạ, vì thời gian mình đóng trước đấy vẫn còn, mà mình bỏ là sau này không có lương hưu đâu ạ.",
+      "Bà con nghỉ việc rồi thì chuyển sang đóng BHXH tự nguyện ở bưu điện chỗ em là được ạ. Em làm thủ tục chuyển cho bà con, thời gian trước đấy vẫn được cộng dồn, không mất đi đâu cả ạ. Bà con kẹt tiền thì cứ tạm dừng, bao giờ có thì đóng tiếp, vẫn được bảo lưu ạ.",
+      "Bà con nào vừa nghỉ việc mà chưa biết làm thế nào thì cứ nhắn Zalo cho em, em kiểm tra giúp bà con xem mình đã đóng được bao nhiêu năm rồi, còn thiếu bao nhiêu năm nữa thì đủ lương hưu ạ.",
+    ],
+  },
+  {
+    slug: "bhyt-ho-gia-dinh-giam-bao-nhieu",
+    tieuDe: "Đóng BHYT Hộ Gia Đình Được Giảm Bao Nhiêu? Em Tính Cho Bà Con Xem Nhé",
+    moTa: "Nhà mình càng đông người cùng tham gia BHYT thì càng được giảm nhiều. Em Thắm tính sẵn cho bà con xem nhà 2 người, 3 người, 4 người thì đóng bao nhiêu ạ.",
+    ngay: "04/11/2026",
+    tuKhoa: "BHYT hộ gia đình giảm bao nhiêu",
+    noiDung: [
+      "Bà con ơi, nhiều bà con chưa biết là đóng BHYT hộ gia đình được giảm tiền đấy ạ. Nhà mình có mấy người cùng tham gia thì người thứ 2, thứ 3, thứ 4 được giảm dần theo quy định của Nhà nước ạ.",
+      "Em lấy ví dụ cho bà con dễ hiểu nhé. Nhà 1 người đóng 1.366.200đ một năm. Nhà 2 người thì tổng khoảng 2.432.400đ, tính ra mỗi người rẻ hơn nhiều rồi ạ. Nhà càng đông thì càng lợi ạ. Bà con cứ bấm cái công cụ tính tiền ở trang chủ hotham.vn là nó ra số chính xác cho nhà mình luôn ạ.",
+      "Bà con nào muốn em tính chính xác cho nhà mình thì cứ nhắn Zalo 0978 333 963 cho em, gửi em số người trong nhà, em tính giúp bà con ngay ạ.",
+    ],
+  },
+  {
+    slug: "mat-the-bhyt-giay-phai-lam-sao",
+    tieuDe: "Mất Thẻ BHYT Giấy Rồi Thì Phải Làm Sao? Bà Con Đừng Lo, Vẫn Gia Hạn Được Ạ",
+    moTa: "Bà con mất thẻ BHYT giấy cũ, không nhớ mã số thẻ thì có gia hạn được không? Được ạ, chỉ cần có CCCD là em Thắm tra ra hết ạ.",
+    ngay: "03/11/2026",
+    tuKhoa: "mất thẻ BHYT phải làm sao",
+    noiDung: [
+      "Bà con ơi, dạo này nhiều bà con nhắn cho em là: Thắm ơi, cô mất cái thẻ giấy cũ rồi, giờ có gia hạn được không? Em trả lời luôn là được ạ, bà con đừng lo gì cả ạ.",
+      "Bây giờ mình đi khám là dùng CCCD gắn chip hoặc dùng app VssID, không cần mang thẻ giấy nữa đâu ạ. Bà con chỉ cần nhớ số CCCD của mình thôi, em tra cứu trên hệ thống là ra hết mã số BHYT, ngày hết hạn, thời gian đã đóng bao nhiêu năm ạ.",
+      "Bà con nào mất thẻ mà chưa biết thẻ nhà mình còn hạn đến bao giờ thì cứ chụp CCCD gửi Zalo cho em, em tra giúp bà con miễn phí ạ. Đừng để đến lúc đi viện mới cuống lên tìm thẻ, lúc đấy lại mất công đi lại ạ.",
+    ],
+  },
+  {
+    slug: "nguoi-gia-60-tuoi-dong-bhxh-co-duoc-luong-huu-khong",
+    tieuDe: "60 Tuổi Rồi Còn Đóng BHXH Được Không? Được Ạ, Vẫn Có Lương Hưu Đấy Bà Con",
+    moTa: "Nhiều cô chú 60 tuổi hỏi em là giờ mới đóng BHXH thì có kịp có lương hưu không. Em trả lời là vẫn kịp ạ, Nhà nước có chính sách trợ cấp hàng tháng cho người đóng dưới 15 năm đấy ạ.",
+    ngay: "02/11/2026",
+    tuKhoa: "60 tuổi đóng BHXH có lương hưu không",
+    noiDung: [
+      "Bà con ơi, nhiều cô chú 60 tuổi nhắn hỏi em là: Giờ cô mới đóng BHXH thì có kịp không hả Thắm? Em trả lời là vẫn kịp ạ, đừng bỏ ạ.",
+      "Theo quy định mới, người từ 60 tuổi trở lên mà đóng BHXH dưới 15 năm thì vẫn được nhận trợ cấp hàng tháng, với được cấp thẻ BHYT miễn phí nữa ạ. Còn nếu cô chú đóng đủ 15 năm thì được nhận lương hưu hẳn hoi đấy ạ. Đóng càng sớm thì càng lợi ạ.",
+      "Cô chú nào 60 tuổi rồi mà chưa đóng bao giờ, hoặc đóng được vài năm rồi bỏ dở, thì cứ nhắn Zalo cho em, em kiểm tra giúp cô chú xem mình còn thiếu bao nhiêu năm nữa, đóng mức nào thì vừa sức ạ.",
+    ],
+  },
+  {
+    slug: "bhyt-cho-con-di-hoc-phai-dong-the-nao",
+    tieuDe: "BHYT Cho Con Đi Học: Bà Con Đóng Ở Trường Hay Đóng Ở Bưu Điện Thì Tiện Hơn?",
+    moTa: "Con đi học thì đóng BHYT ở trường hay ở bưu điện? Em Thắm giải thích để bà con chọn cách nào tiện nhất cho nhà mình ạ.",
+    ngay: "01/11/2026",
+    tuKhoa: "BHYT cho con đi học",
+    noiDung: [
+      "Bà con ơi, vào đầu năm học là nhiều bà con hỏi em là con nhà em đi học thì đóng BHYT ở trường hay ở bưu điện. Em nói thật là đóng ở đâu cũng được ạ, đều là BHYT của Nhà nước, quyền lợi như nhau ạ.",
+      "Nhưng mà có 2 cái bà con nên để ý giúp em nhé. Một là nếu nhà mình đã có 2-3 người cùng tham gia BHYT hộ gia đình ở bưu điện rồi, thì cho con vào chung hộ gia đình sẽ được giảm tiền nhiều hơn là đóng riêng ở trường đấy ạ. Hai là đóng ở bưu điện thì em nhắc hạn cho cả nhà cùng một lúc, bà con đỡ phải nhớ nhiều ngày khác nhau ạ.",
+      "Bà con nào chưa biết nên đóng cho con ở đâu thì cứ nhắn Zalo cho em, gửi em số người trong nhà, em tính giúp bà con xem đóng gộp hay đóng riêng thì rẻ hơn ạ.",
+    ],
+  },
+  {
+    slug: "dong-bhxh-o-nong-thon-co-loi-gi",
+    tieuDe: "Bà Con Ở Nông Thôn Đóng BHXH Tự Nguyện Được Lợi Gì? Được Nhiều Lắm Đấy Ạ",
+    moTa: "Bà con ở quê mình làm ruộng, buôn bán nhỏ thì có nên đóng BHXH không? Nên ạ, để sau này mình có lương hưu, không phải dựa vào con cháu ạ.",
+    ngay: "31/10/2026",
+    tuKhoa: "BHXH tự nguyện nông thôn",
+    noiDung: [
+      "Bà con ơi, nhiều bà con ở quê mình bảo với em là: Thắm ơi, cô làm ruộng thì đóng BHXH làm gì, sau này con nó nuôi. Em nghe thế em thương lắm ạ, nhưng mà em vẫn khuyên bà con là nên đóng ạ.",
+      "Bà con đóng BHXH tự nguyện là để sau này mình có lương hưu hàng tháng, tự lo được cho mình, không phải ngửa tay xin con cháu ạ. Với lại đóng BHXH là được cấp thẻ BHYT miễn phí, ốm đau đi viện không tốn nhiều tiền ạ. Nhà nước còn hỗ trợ tiền đóng cho bà con mình nữa đấy ạ.",
+      "Bà con làm ruộng, thu nhập không đều thì cứ đóng mức thấp nhất thôi ạ, 231.000đ một tháng, tháng nào có thì đóng, tháng nào kẹt thì tạm dừng, không sao cả ạ. Cứ nhắn Zalo cho em, em hướng dẫn bà con từ đầu ạ.",
+    ],
+  },
+  {
+    slug: "5-nam-lien-tuc-bhyt-quan-trong-the-nao",
+    tieuDe: "Mốc 5 Năm Liên Tục Của Thẻ BHYT Quan Trọng Thế Nào Mà Bà Con Hay Bị Mất?",
+    moTa: "Mất mốc 5 năm liên tục là thiệt thòi lớn nhất khi để thẻ BHYT quá hạn. Em Thắm giải thích để bà con hiểu vì sao phải giữ mốc này bằng được ạ.",
+    ngay: "30/10/2026",
+    tuKhoa: "mốc 5 năm liên tục BHYT",
+    noiDung: [
+      "Bà con ơi, cái mốc 5 năm liên tục này là cái mà bà con hay bị mất nhất, mà mất rồi thì tiếc lắm ạ. Em giải thích nôm na cho bà con dễ hiểu nhé.",
+      "Bà con đóng BHYT liên tục đủ 5 năm, mà đi khám chữa bệnh đúng tuyến, mà tổng tiền mình phải trả trong năm nó vượt quá 6 tháng lương cơ sở, thì phần vượt đấy Nhà nước sẽ trả cho mình ạ. Tức là mình được hưởng 100% luôn đấy ạ. Còn nếu bà con để thẻ quá hạn trên 90 ngày là cái mốc 5 năm đấy bị xóa hết, lại phải đóng lại từ đầu, lại chờ thêm 5 năm nữa ạ.",
+      "Thế nên bà con nhớ giúp em một câu thôi: Thẻ sắp hết hạn thì nhắn em trước 1 tháng, đừng để quá ạ. Em nhắc miễn phí cho cả nhà mình, để nhà mình giữ được cái mốc quý này ạ.",
+    ],
+  },
+];
