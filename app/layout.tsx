@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
 import { AGENT_CONFIG } from "@/config/agent";
@@ -20,6 +20,16 @@ export const metadata: Metadata = {
   description: AGENT_CONFIG.seo.homeDesc,
   keywords: ["gia han BHYT Me Linh", "dong BHXH tu nguyen", "Chi Tham Buu Dien"],
   robots: { index: true, follow: true },
+  // Đưa viewport vào trong metadata để tương thích với Next.js cũ
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0B4AA2" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B4AA2" },
+  ],
   openGraph: {
     type: "website",
     locale: "vi_VN",
@@ -31,17 +41,6 @@ export const metadata: Metadata = {
   },
   icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
   appleWebApp: { capable: true, statusBarStyle: "default", title: "Bao Hiem Chi Tham" },
-};
-
-// Khai báo viewport chuẩn theo Next.js mới (hoạt động tốt từ bản 14 trở lên)
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0B4AA2" },
-    { media: "(prefers-color-scheme: dark)", color: "#0B4AA2" },
-  ],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
