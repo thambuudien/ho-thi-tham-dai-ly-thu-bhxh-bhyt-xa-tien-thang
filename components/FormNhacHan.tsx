@@ -56,7 +56,7 @@ const doiNam = (namMoi: string) => {
     })}
   </select>
 
-  <select
+  {/* <select
     disabled={form.khongNho}
     value={namDaChon}
     onChange={(e) => doiNam(e.target.value)}
@@ -68,7 +68,7 @@ const doiNam = (namMoi: string) => {
         Năm {year}
       </option>
     ))}
-  </select>
+  </select> */}
 </div>
   {form.thangHetHan && !form.khongNho && (
     <p className="text-sm text-green-700 mt-1">
