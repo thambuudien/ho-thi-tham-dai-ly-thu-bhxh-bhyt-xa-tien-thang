@@ -19,7 +19,7 @@ export default function Footer() {
       </div>
     </footer>
     <div className="w-full py-5 text-center text-xs text-white/80 border-t border-white/15 bg-[#073A7D] px-4">
-  <p>© {new Date().getFullYear()} Đại lý thu BHXH, BHYT tại xã Tiến Thắng - Bảo hiểm xã hội cơ sở Mê Linh</p>
+  <p>© {new Date().getFullYear()} <a target="_blank" href="https://www.lovanlong.id.vn/">Đại lý thu BHXH, BHYT tại xã Tiến Thắng</a> - Bảo hiểm xã hội cơ sở Mê Linh</p>
   <p className="mt-1.5">
     {CONTACT.diaChiNgan}
     {' '}•{' '}
@@ -31,7 +31,7 @@ export default function Footer() {
     Từ 01.01.2027 mức chuẩn nghèo lên 2.200.000đ - Bà con bấm vào trang Tính Lương Hưu để tính thử mức mới ạ.
   </p>
   <p className="mt-1.5">
-    Thiết kế bởi <a href="https://longwebstudio.io.vn" target="_blank" rel="noopener noreferrer" className="underline">Long Web Studio</a>
+    Thiết kế bởi <a href="https://www.longwebstudio.io.vn/" target="_blank" rel="noopener noreferrer" className="underline">Long Web Studio</a>
   </p>
 </div>
     </>

@@ -91,8 +91,8 @@ export default function LinkInBioPage() {
       </main>
 
       <footer className="w-full py-4 text-center text-xs text-white/60 border-t border-white/10 bg-black/10">
-        <p>© 2026 Đại lý BHYT {AGENT_CONFIG.agentName}</p>
-        <p>Thiết kế bởi <a href="https://longwebstudio.io.vn" target="_blank" rel="noopener noreferrer" className="underline">Long Web Studio</a></p>
+        <p>© 2026 <a target="_blank" href="https://www.lovanlong.id.vn/">Đại lý thu BHXH, BHYT tại xã Tiến Thắng</a></p>
+        <p>Thiết kế bởi <a href="https://www.longwebstudio.io.vn/" target="_blank" rel="noopener noreferrer" className="underline">Long Web Studio</a></p>
       </footer>
     </div>
   );

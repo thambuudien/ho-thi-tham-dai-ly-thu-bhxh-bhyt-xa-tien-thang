@@ -85,6 +85,21 @@ export default function BHXHPage() {
         <p className="mt-1 text-gray-700">Dự kiến: {m.luongDuKien}</p>
       </div>
     ))}
+    {/* LINK SANG CÔNG CỤ TÍNH LƯƠNG HƯU */}
+<div className="mt-5 bg-blue-50 border border-blue-100 rounded-xl p-4 text-center sm:text-left">
+  <p className="font-bold text-[#0B4AA2]">
+    Bà con chưa biết sau này lương hưu được bao nhiêu?
+  </p>
+  <p className="mt-1 text-sm text-gray-700">
+    Bấm vào đây để tự tính thử, đóng mức nào thì sau này hưởng mức đó ạ.
+  </p>
+  <a
+    href="/tinh-luong-huu-bhxh"
+    className="inline-block mt-3 bg-[#0B4AA2] hover:bg-blue-800 text-white font-bold px-5 py-2.5 rounded-full text-sm transition-all"
+  >
+    Tính thử lương hưu nhà mình →
+  </a>
+</div>
   </div>
   {/* MỤC HỖ TRỢ - GHI RÕ SỐ TIỀN */}
   <div className="mt-6 bg-blue-50 border border-blue-200 rounded-2xl p-5">
@@ -106,12 +121,14 @@ export default function BHXHPage() {
         </div>
       ))}
     </div>
+    
   </div>
   <p className="text-center mt-4 text-gray-600">
     Con số trên là để bà con tham khảo thôi ạ. Bà con nhắn Zalo cho em,
     em tính chính xác cho nhà mình ạ.
   </p>
 </section>
+
     <section className="max-w-4xl mx-auto pb-12 px-4"><h2 className="text-2xl font-bold text-[#0B4AA2] text-center">5 Câu Bà Con Hay Hỏi Em Nhất Về BHXH</h2><div className="mt-6 space-y-3">{FAQ_BHXH.map((f,i)=>(<details key={i} className="border rounded-xl p-4"><summary className="font-bold cursor-pointer">{f.hoi}</summary><p className="mt-2 text-lg leading-relaxed">{f.dap}</p></details>))}</div>
     <div className="text-center mt-8 flex flex-col sm:flex-row justify-center gap-4">
   <a href="/" className="inline-block border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-lg transition duration-200">

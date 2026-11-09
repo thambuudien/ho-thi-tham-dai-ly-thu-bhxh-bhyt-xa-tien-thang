@@ -205,7 +205,7 @@ export default function FormNhacHan() {
 
         {/* CỘT PHẢI - BẰNG CHỨNG */}
         <div className="bg-white rounded-2xl p-6 shadow">
-          <h3 className="text-xl font-bold">Bà con với báo chí nói gì về em Thắm?</h3>
+          <h3 className="text-xl font-bold">Bà con với báo chí nói gì về chị Thắm?</h3>
           <p className="mt-3">
             {BANG_CHUNG.baoChi}{" "}
             <a
@@ -233,6 +233,21 @@ export default function FormNhacHan() {
             alt="Biên lai điện tử mẫu"
             className="rounded-xl mt-2 w-full"
           />
+          {/* LINK SANG CÔNG CỤ TÍNH BHYT */}
+<div className="mt-5 bg-blue-50 border border-blue-100 rounded-xl p-4">
+  <p className="font-bold text-[#0B4AA2]">
+    Bà con chưa biết nhà mình đóng bao nhiêu?
+  </p>
+  <p className="mt-1 text-sm text-gray-700">
+    Bấm vào đây để tự tính tiền BHYT hộ gia đình trong 10 giây, đúng giá Nhà nước ạ.
+  </p>
+  <a
+    href="/tinh-muc-dong-bhyt"
+    className="inline-block mt-3 bg-[#0B4AA2] hover:bg-blue-800 text-white font-bold px-5 py-2.5 rounded-full text-sm transition-all"
+  >
+    Tính tiền BHYT nhà mình →
+  </a>
+</div>
         </div>
       </div>
     </section>

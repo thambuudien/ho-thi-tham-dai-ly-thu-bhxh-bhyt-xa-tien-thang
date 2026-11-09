@@ -84,6 +84,18 @@ export default function CostDetailsTable({
           purpose={`GIA HAN BHYT HOGIADINH`} 
         />
       </div>
+      {/* NÚT ĐĂNG KÝ NHẮC HẠN - ĐẶT NGAY DƯỚI KẾT QUẢ */}
+<div className="mt-6 text-center">
+  <a
+    href="/#form-nhac-han"
+    className="inline-block w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold text-lg px-8 py-3.5 rounded-full shadow-lg transition-all"
+  >
+    Đăng ký nhắc hạn - Miễn phí ạ
+  </a>
+  <p className="mt-2 text-sm text-gray-600">
+    Bà con tính xong, đăng ký để em Thắm nhắc hạn cho cả nhà mình ạ.
+  </p>
+</div>
 
       {/* LIÊN HỆ QUA ZALO */}
       {/* <div className="bg-[#0B4AA2] text-white p-4 rounded-2xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
