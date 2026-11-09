@@ -4,7 +4,7 @@ import React from 'react';
 import { Calculator, User, Users, Wallet, Copy, Check } from 'lucide-react';
 import { AGENT_CONFIG } from '@/config/agent';
 
-type SupportType = 'chinh_sach_100' | 'uu_dai_50' | 'doi_tuong_40' | 'chua_chac';
+export type SupportType = 'chinh_sach_100' | 'uu_dai_50' | 'doi_tuong_40' | 'chua_chac';
 
 interface BhxhCalculatorInputProps {
   incomeChoice: number;
@@ -17,6 +17,7 @@ interface BhxhCalculatorInputProps {
   formatVnd: (val: number) => string;
   copied: boolean;
   setCopied: (c: boolean) => void;
+  minIncome: number;
 }
 
 export default function BhxhCalculatorInput({
@@ -30,10 +31,12 @@ export default function BhxhCalculatorInput({
   formatVnd,
   copied,
   setCopied,
+  minIncome,
 }: BhxhCalculatorInputProps) {
 
   const suggestedIncomes = [
     1500000,
+    2200000,
     3000000,
     5000000,
     8000000,
@@ -53,7 +56,7 @@ export default function BhxhCalculatorInput({
             ? 'Đối tượng khác tại Hà Nội (Nhà nước 20% + TP hỗ trợ 20%)'
             : 'Chưa chắc thuộc nhóm nào - Nhờ chị Thắm kiểm tra giúp';
 
-    const text = `Nhờ chị Hồ Thị Thắm tính giúp BHXH Tự Nguyện:\n- Mức thu nhập con chọn: ${formatVnd(incomeChoice)}/tháng\n- Giới tính: ${gender === 'nam' ? 'Nam' : 'Nữ'}\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp dự kiến: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến (Đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nNhờ chị kiểm tra giúp con xem có đúng không ạ. Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
+    const text = `Nhờ chị Hồ Thị Thắm tính giúp BHXH Tự Nguyện:\n- Mức thu nhập con chọn: ${formatVnd(incomeChoice)}/tháng\n- Mức sàn đang áp dụng: ${formatVnd(minIncome)}/tháng\n- Giới tính: ${gender === 'nam' ? 'Nam' : 'Nữ'}\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp dự kiến: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến (Đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nNhờ chị kiểm tra giúp con xem có đúng không ạ. Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
 
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -67,7 +70,7 @@ export default function BhxhCalculatorInput({
         <h5>Thông số tham gia BHXH</h5>
       </div>
 
-      {/* 1. MỨC THU NHẬP */}
+      {/* 1. MỨC THU NHẬP - Mức sàn tự đổi theo mức chuẩn nghèo */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
@@ -80,19 +83,24 @@ export default function BhxhCalculatorInput({
 
         <input
           type="range"
-          min="1500000"
+          min={minIncome}
           max="50600000"
           step="50000"
           value={incomeChoice}
-          onChange={(e) => setIncomeChoice(parseInt(e.target.value) || 1500000)}
+          onChange={(e) => setIncomeChoice(Math.max(minIncome, parseInt(e.target.value) || minIncome))}
           className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
         />
         <div className="flex justify-between text- text-slate-400 font-medium border-b pb-2">
-          <span>Thấp nhất: {formatVnd(1500000)}</span>
+          <span>Thấp nhất (Mức sàn): {formatVnd(minIncome)}</span>
           <span>Tối đa: {formatVnd(50600000)}</span>
         </div>
         <p className="text- text-slate-500 leading-relaxed">
           Bà con đóng mức cao hơn thì sau này lương hưu cao hơn. Mới bắt đầu thì cứ chọn mức sàn cũng được ạ.
+          {minIncome === 2200000 && (
+            <span className="block mt-1 text-emerald-700 font-medium">
+              Đang tính theo mức sàn mới 2.200.000đ - Từ 01.01.2027 mới áp dụng chính thức, hiện bà con đang xem trước ạ.
+            </span>
+          )}
         </p>
 
         <div className="space-y-1.5">
@@ -100,18 +108,20 @@ export default function BhxhCalculatorInput({
           <div className="flex flex-wrap gap-1.5">
             {suggestedIncomes.map((income) => {
               const isSelected = incomeChoice === income;
+              // Ẩn nút thấp hơn mức sàn để bà con không bấm nhầm
+              if (income < minIncome) return null;
               return (
                 <button
                   key={income}
                   type="button"
                   onClick={() => setIncomeChoice(income)}
-                  className={`px-2 py-1.5 rounded-xl font-mono font-bold text- border transition-all duration-150 ${
+                  className={`px-2 py-1.5 rounded-xl font-mono font-bold text- border transition-all duration-150 cursor-pointer ${
                     isSelected
                       ? 'bg-blue-50 text-blue-700 border-blue-400 shadow-sm'
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
-                  {income === 1500000 ? 'Mức Sàn' : formatVnd(income).replace(' đ', '')}
+                  {income === minIncome ? 'Mức Sàn' : formatVnd(income).replace(' đ', '')}
                 </button>
               );
             })}
@@ -119,7 +129,7 @@ export default function BhxhCalculatorInput({
         </div>
       </div>
 
-      {/* 2. GIỚI TÍNH - Nói đơn giản cho bà con hiểu */}
+      {/* 2. GIỚI TÍNH */}
       <div className="space-y-1.5">
         <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
           <User className="w-3.5 h-3.5 text-slate-400 shrink-0" /> Giới tính người tham gia:
@@ -130,7 +140,7 @@ export default function BhxhCalculatorInput({
               key={g}
               type="button"
               onClick={() => setGender(g)}
-              className={`py-2 rounded-xl font-bold border transition text- ${
+              className={`py-2 rounded-xl font-bold border transition text- cursor-pointer ${
                 gender === g
                   ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
                   : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
@@ -143,7 +153,7 @@ export default function BhxhCalculatorInput({
         <p className="text- text-slate-500">Nam và Nữ có cách tính tỷ lệ hưởng hơi khác nhau, nên bà con chọn đúng giúp em ạ.</p>
       </div>
 
-      {/* 3. NHÓM ƯU ĐÃI - ĐÃ THÊM LỰA CHỌN "CHƯA CHẮC" + SỬA CHỮ 100% */}
+      {/* 3. NHÓM ƯU ĐÃI - Đã thêm lựa chọn Chưa chắc */}
       <div className="space-y-1.5">
         <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
           <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" /> Bà con thuộc nhóm nào?
@@ -170,7 +180,7 @@ export default function BhxhCalculatorInput({
                   name="supportType"
                   checked={isChecked}
                   onChange={() => setSupportType(item.id)}
-                  className="w-3.5 h-3.5 mt-0.5 text-blue-600 focus:ring-blue-500 border-slate-300 bg-white"
+                  className="w-3.5 h-3.5 mt-0.5 text-blue-600 focus:ring-blue-500 border-slate-300 bg-white cursor-pointer"
                 />
                 <span>
                   <span className="block text- leading-tight">{item.label}</span>
@@ -186,7 +196,7 @@ export default function BhxhCalculatorInput({
       <button
         type="button"
         onClick={handleCopy}
-        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl uppercase tracking-wider transition shadow-sm mt-3 flex items-center justify-center gap-1.5"
+        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl uppercase tracking-wider transition shadow-sm mt-3 flex items-center justify-center gap-1.5 cursor-pointer"
       >
         {copied ? (
           <>
