@@ -56,7 +56,7 @@ export default function BhxhCalculatorInput({
             ? 'Đối tượng khác tại Hà Nội (Nhà nước 20% + TP hỗ trợ 20%)'
             : 'Chưa chắc thuộc nhóm nào - Nhờ chị Thắm kiểm tra giúp';
 
-    const text = `Nhờ chị Hồ Thị Thắm tính giúp BHXH Tự Nguyện:\n- Mức thu nhập con chọn: ${formatVnd(incomeChoice)}/tháng\n- Mức sàn đang áp dụng: ${formatVnd(minIncome)}/tháng\n- Giới tính: ${gender === 'nam' ? 'Nam' : 'Nữ'}\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp dự kiến: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến (Đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nNhờ chị kiểm tra giúp con xem có đúng không ạ. Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
+    const text = `Nhờ chị Hồ Thị Thắm tính giúp BHXH Tự Nguyện:\n- Mức thu nhập con chọn: ${formatVnd(incomeChoice)}/tháng\n- Mức tối thiểu đang áp dụng: ${formatVnd(minIncome)}/tháng\n- Giới tính: ${gender === 'nam' ? 'Nam' : 'Nữ'}\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp dự kiến: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến (Đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nNhờ chị kiểm tra giúp con xem có đúng không ạ. Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
 
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -70,7 +70,7 @@ export default function BhxhCalculatorInput({
         <h5>Thông số tham gia BHXH</h5>
       </div>
 
-      {/* 1. MỨC THU NHẬP - Mức sàn tự đổi theo mức chuẩn nghèo */}
+      {/* 1. MỨC THU NHẬP - Mức tối thiểu tự đổi theo mức chuẩn nghèo */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
@@ -91,14 +91,14 @@ export default function BhxhCalculatorInput({
           className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
         />
         <div className="flex justify-between text- text-slate-400 font-medium border-b pb-2">
-          <span>Thấp nhất (Mức sàn): {formatVnd(minIncome)}</span>
+          <span>Thấp nhất (Mức tối thiểu): {formatVnd(minIncome)}</span>
           <span>Tối đa: {formatVnd(50600000)}</span>
         </div>
         <p className="text- text-slate-500 leading-relaxed">
-          Bà con đóng mức cao hơn thì sau này lương hưu cao hơn. Mới bắt đầu thì cứ chọn mức sàn cũng được ạ.
+          Bà con đóng mức cao hơn thì sau này lương hưu cao hơn. Mới bắt đầu thì cứ chọn mức tối thiểu cũng được ạ.
           {minIncome === 2200000 && (
             <span className="block mt-1 text-emerald-700 font-medium">
-              Đang tính theo mức sàn mới 2.200.000đ - Từ 01.01.2027 mới áp dụng chính thức, hiện bà con đang xem trước ạ.
+              Đang tính theo mức tối thiểu mới 2.200.000đ - Từ 01.01.2027 mới áp dụng chính thức, hiện bà con đang xem trước ạ.
             </span>
           )}
         </p>
@@ -108,7 +108,7 @@ export default function BhxhCalculatorInput({
           <div className="flex flex-wrap gap-1.5">
             {suggestedIncomes.map((income) => {
               const isSelected = incomeChoice === income;
-              // Ẩn nút thấp hơn mức sàn để bà con không bấm nhầm
+              // Ẩn nút thấp hơn mức tối thiểu để bà con không bấm nhầm
               if (income < minIncome) return null;
               return (
                 <button
@@ -121,7 +121,7 @@ export default function BhxhCalculatorInput({
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
-                  {income === minIncome ? 'Mức Sàn' : formatVnd(income).replace(' đ', '')}
+                  {income === minIncome ? 'Mức tối thiểu' : formatVnd(income).replace(' đ', '')}
                 </button>
               );
             })}
@@ -160,7 +160,7 @@ export default function BhxhCalculatorInput({
         </label>
         <div className="space-y-2">
           {[
-            { id: 'chua_chac' as SupportType, label: 'Em chưa chắc - Để chị Thắm kiểm tra giúp (Nên chọn cái này)', desc: 'Bà con cứ chọn cái này, em kiểm tra rồi báo lại cho chính xác ạ.' },
+            { id: 'chua_chac' as SupportType, label: 'Tôi chưa chắc - Để chị Thắm kiểm tra giúp (Nên chọn cái này)', desc: 'Bà con cứ chọn cái này, em kiểm tra rồi báo lại cho chính xác ạ.' },
             { id: 'chinh_sach_100' as SupportType, label: 'Hộ nghèo & Hộ cận nghèo', desc: 'Được hỗ trợ cao nhất, mức hỗ trợ tùy theo quyết định của xã.' },
             { id: 'uu_dai_50' as SupportType, label: 'CCB, Cựu quân nhân, CAND, TNXP thuộc CLB', desc: 'Được hỗ trợ thêm theo chính sách của Hà Nội.' },
             { id: 'doi_tuong_40' as SupportType, label: 'Các đối tượng khác ở Hà Nội', desc: 'Nhà nước hỗ trợ 20% + TP Hà Nội hỗ trợ thêm 20%.' },

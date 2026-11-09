@@ -107,7 +107,7 @@ export default function FormNhacHan() {
           />
 
           {/* 3. Mã BHXH / CCCD */}
-          <label className="block mt-4 font-medium">Mã BHXH / CCCD *</label>
+          <label className="block mt-4 font-medium">Số CCCD *</label>
           <input
             required
             value={form.bhxhCccd}
