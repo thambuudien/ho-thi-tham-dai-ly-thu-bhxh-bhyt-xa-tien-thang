@@ -1,7 +1,5 @@
-'use html';
 'use client';
 
-import React from 'react';
 import { Calculator, Users, Calendar, UserCheck, Plus, Minus } from 'lucide-react';
 import { AGENT_CONFIG } from '@/config/agent';
 
@@ -19,7 +17,7 @@ interface CalculatorInputProps {
   setAlreadyRenewedCount: (count: number) => void;
   durationMonths: 3 | 6 | 12;
   setDurationMonths: (months: 3 | 6 | 12) => void;
-  detailedRates: DetailedRateItem[]; // ĐÃ SỬA: Kiểu mảng DetailedRateItem[]
+  detailedRates: DetailedRateItem[];
   grandTotal: number;
   formatVnd: (val: number) => string;
   copiedLink: boolean;
@@ -40,7 +38,9 @@ export default function CalculatorInput({
   setCopiedLink,
 }: CalculatorInputProps) {
   
-  // Sửa lại các hàm xử lý tăng/giảm số lượng
+  // Tổng nhà mình = số người đóng đợt này + số người đã đóng rồi
+  const tongNhaMinh = memberCount + alreadyRenewedCount;
+
   const handleMemberIncrement = () => {
     if (memberCount < 15) setMemberCount(memberCount + 1);
   };
@@ -55,7 +55,7 @@ export default function CalculatorInput({
     if (alreadyRenewedCount > 0) setAlreadyRenewedCount(alreadyRenewedCount - 1);
   };
 
-  const copyToClipboard = () => {
+  const copyToClipboard = async () => {
     let memberDetailsText = "";
     detailedRates.forEach((item) => {
       memberDetailsText += `+ ${item.label} (${item.discountText}): ${formatVnd(item.cost)}\n`;
@@ -63,89 +63,111 @@ export default function CalculatorInput({
 
     const dynamicShareUrl = `${AGENT_CONFIG.contact.website}/tinh-muc-dong-bhyt?tongNguoi=${memberCount}&daCoBHYT=${alreadyRenewedCount}&thoiHan=${durationMonths}`;
 
-    // ĐÃ SỬA: Gom chuỗi text liền mạch, loại bỏ các ký tự dấu gạch ngang lỗi
-    const text = `Dự toán phí BHYT Hộ gia đình từ Đại lý bưu điện chị Hồ Thị Thắm:\nSố người gia hạn đợt này: ${memberCount} người\nSố người đã đóng trước trong năm: ${alreadyRenewedCount} người\nThời hạn đóng: ${durationMonths} tháng\n\n📌 Chi tiết từng thành viên:\n${memberDetailsText}\n👉 Tổng số tiền cần nộp đợt này: ${formatVnd(grandTotal)}\n\n👉 Bạn có thể xem trực tiếp hoặc tự tính lại tại đây:\n${dynamicShareUrl}\n\nLiên hệ làm thủ tục gia hạn trực tuyến qua Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
+    // ĐÃ SỬA: Dùng zaloNumber để bà con bấm vào ra Zalo ngay, không dùng phoneDisplay có dấu chấm
+    const text = `Dự toán phí BHYT hộ gia đình từ Đại lý bưu điện chị Hồ Thị Thắm:\nNhà mình tổng có: ${tongNhaMinh} người\nSố người đóng đợt này: ${memberCount} người\nSố người đã đóng rồi trong năm: ${alreadyRenewedCount} người\nThời hạn đóng: ${durationMonths} tháng\n\nChi tiết từng người:\n${memberDetailsText}\nTổng tiền nhà mình phải nộp đợt này: ${formatVnd(grandTotal)}\n\nBà con tự tính lại tại đây:\n${dynamicShareUrl}\n\nNhắn Zalo cho em Thắm để em kiểm tra lại giúp bà con nhé: https://zalo.me/${AGENT_CONFIG.contact.zaloNumber}`;
     
-    navigator.clipboard.writeText(text);
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Dự phòng cho điện thoại cũ không copy được: hiện ô để bà con tự copy
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
     setCopiedLink(true);
     setTimeout(() => setCopiedLink(false), 2000);
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5 font-sans text-xs">
-      <div className="flex items-center gap-2 border-b pb-2 text-indigo-800 font-bold text-sm uppercase tracking-wide">
-        <Calculator className="w-4 h-4" />
-        <h5>Thông số tính toán đợt này</h5>
+    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-5 font-sans text-sm">
+      <div className="flex items-center gap-2 border-b pb-2 text-[#0B4AA2] font-bold text-base uppercase tracking-wide">
+        <Calculator className="w-5 h-5" />
+        <h5>Nhà mình có mấy người ạ?</h5>
       </div>
 
-      {/* CỤM NÚT 1 */}
+      {/* Ô 1 - Số người đóng đợt này */}
       <div className="space-y-2">
-        <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide text-xs">
-          <Users className="w-3.5 h-3.5 text-slate-400" /> Số người gia hạn đợt này:
+        <label className="flex items-center gap-1.5 font-bold text-slate-800 text-sm">
+          <Users className="w-4 h-4 text-slate-500" /> 1. Đợt này nhà mình đóng cho mấy người ạ?
         </label>
+        <p className="text-xs text-slate-500">Ví dụ: Nhà có 4 người, 1 người đã đóng rồi thì đợt này chỉ đóng cho 3 người còn lại thôi ạ.</p>
         
-        <div className="flex items-center max-w-[180px] bg-slate-50 border border-slate-200 rounded-xl overflow-hidden p-1">
+        <div className="flex items-center max-w- bg-slate-50 border border-slate-200 rounded-xl overflow-hidden p-1">
           <button
             type="button"
+            aria-label="Giảm 1 người"
             onClick={handleMemberDecrement}
-            className="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95 transition-all focus:outline-none"
+            className="w-12 h-12 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95"
           >
-            <Minus className="w-4 h-4" />
+            <Minus className="w-5 h-5" />
           </button>
           
           <input 
             type="number" 
             value={memberCount}
-            className="w-full text-center bg-transparent border-none font-mono font-black text-lg text-slate-900 focus:outline-none pointer-events-none"
+            aria-label="Số người gia hạn đợt này"
+            className="w-full text-center bg-transparent border-none font-bold text-xl text-slate-900 focus:outline-none pointer-events-none"
             readOnly
           />
           
           <button
             type="button"
+            aria-label="Thêm 1 người"
             onClick={handleMemberIncrement}
-            className="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95 transition-all focus:outline-none"
+            className="w-12 h-12 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-5 h-5" />
           </button>
         </div>
       </div>
 
-      {/* CỤM NÚT 2 */}
+      {/* Ô 2 - Số người đã đóng rồi */}
       <div className="space-y-2">
-        <label className="flex items-center gap-1.5 font-bold text-amber-700 uppercase tracking-wide text-xs">
-          <UserCheck className="w-3.5 h-3.5 text-amber-500" /> Số người ĐÃ GIA HẠN TRƯỚC (nếu có):
+        <label className="flex items-center gap-1.5 font-bold text-amber-700 text-sm">
+          <UserCheck className="w-4 h-4 text-amber-500" /> 2. Trong nhà mình đã có mấy người đóng rồi ạ?
         </label>
+        <p className="text-xs text-slate-500">Nếu nhà mình chưa ai đóng thì để số 0 ạ. Nếu đã có người đóng rồi thì bấm + để chọn ạ.</p>
         
-        <div className="flex items-center max-w-[180px] bg-amber-50/10 border border-amber-200/60 rounded-xl overflow-hidden p-1">
+        <div className="flex items-center max-w- bg-amber-50 border border-amber-200 rounded-xl overflow-hidden p-1">
           <button
             type="button"
+            aria-label="Giảm 1 người đã đóng"
             onClick={handleAlreadyDecrement}
-            className="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95 transition-all focus:outline-none"
+            className="w-12 h-12 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95"
           >
-            <Minus className="w-4 h-4" />
+            <Minus className="w-5 h-5" />
           </button>
           
           <input 
             type="number" 
             value={alreadyRenewedCount}
-            className="w-full text-center bg-transparent border-none font-mono font-black text-lg text-amber-700 focus:outline-none pointer-events-none"
+            aria-label="Số người đã đóng rồi"
+            className="w-full text-center bg-transparent border-none font-bold text-xl text-amber-700 focus:outline-none pointer-events-none"
             readOnly
           />
           
           <button
             type="button"
+            aria-label="Thêm 1 người đã đóng"
             onClick={handleAlreadyIncrement}
-            className="w-10 h-10 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95 transition-all focus:outline-none"
+            className="w-12 h-12 flex items-center justify-center bg-white border border-slate-200 rounded-lg text-slate-600 hover:bg-amber-50 hover:text-amber-600 active:scale-95"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-5 h-5" />
           </button>
         </div>
+        {/* Hiện tổng để bà con kiểm tra mình bấm đúng chưa */}
+        <p className="text-sm font-bold text-[#0B4AA2] bg-blue-50 border border-blue-100 rounded-lg p-2">
+          Tổng nhà mình có: {tongNhaMinh} người ạ. Bà con kiểm tra lại giúp em nhé, đúng rồi hãy bấm copy ở dưới ạ.
+        </p>
       </div>
 
-      {/* Thời gian đóng đợt này */}
+      {/* Thời gian đóng */}
       <div className="space-y-1.5">
-        <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
-          <Calendar className="w-3.5 h-3.5 text-slate-400" /> Thời gian đóng đợt này:
+        <label className="flex items-center gap-1.5 font-bold text-slate-800 text-sm">
+          <Calendar className="w-4 h-4 text-slate-500" /> 3. Nhà mình đóng mấy tháng ạ?
         </label>
         <div className="grid grid-cols-3 gap-2">
           {(['3', '6', '12'] as const).map((months) => {
@@ -155,13 +177,13 @@ export default function CalculatorInput({
                 key={months}
                 type="button"
                 onClick={() => setDurationMonths(parsedMonths)}
-                className={`py-2.5 px-1 text-center font-bold border rounded-xl transition text-xs ${
+                className={`py-3 px-1 text-center font-bold border rounded-xl transition text-sm ${
                   durationMonths === parsedMonths 
-                    ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm shadow-indigo-500/10' 
+                    ? 'bg-[#0B4AA2] text-white border-[#0B4AA2] shadow' 
                     : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
-                {months} Tháng
+                {months} tháng
               </button>
             );
           })}
@@ -171,9 +193,9 @@ export default function CalculatorInput({
       <button
         type="button"
         onClick={copyToClipboard}
-        className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-sm flex items-center justify-center gap-1.5"
+        className="w-full bg-[#0B4AA2] hover:bg-blue-800 text-white font-bold py-3.5 px-4 rounded-xl text-sm transition shadow flex items-center justify-center gap-2"
       >
-        {copiedLink ? '✓ Đã sao chép thành công' : '📋 Sao chép kết quả gửi Zalo'}
+        {copiedLink ? '✓ Đã copy rồi ạ, bà con dán vào Zalo gửi cho em nhé' : '📋 Copy kết quả gửi Zalo cho em ạ'}
       </button>
     </div>
   );

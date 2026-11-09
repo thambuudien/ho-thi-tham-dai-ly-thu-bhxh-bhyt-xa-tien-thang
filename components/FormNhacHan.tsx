@@ -87,7 +87,15 @@ const doiNam = (namMoi: string) => {
         </form>
         <div className="bg-white rounded-2xl p-6 shadow">
           <h3 className="text-xl font-bold">Bà con với báo chí nói gì về em Thắm?</h3>
-          <p className="mt-3">{BANG_CHUNG.baoChi}</p>
+          <p className="mt-3">{BANG_CHUNG.baoChi} <a 
+  className="text-blue-600 font-medium hover:underline hover:text-blue-700 transition-all duration-200" 
+  href="https://vietnampost.vn/vi/nguoi-buu-dien/nu-nhan-vien-buu-dien-van-hoa-xa-da-kenh" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  Đọc bài viết về Nữ nhân viên Bưu điện Văn hóa xã Đa Kênh
+</a>
+</p>
           <div className="mt-4 space-y-3">
             {BANG_CHUNG.baCon.map((b,i)=>(<blockquote key={i} className="border-l-4 border-yellow-400 pl-3"><p>{b.noi}</p><cite className="text-sm">- {b.nguoi}</cite></blockquote>))}
           </div>

@@ -73,10 +73,11 @@ export default function ThanhTren() {
               <span className="mt-0.5">{m.label.split(" - ")[0]}</span>
             </Link>
           ))}
-          <a href={CONTACT.zaloLink} className="flex flex-col items-center py-2 text-[11px] leading-tight text-green-700 font-bold">
-            <span className="text-[22px]">💬</span>
-            <span className="mt-0.5">Zalo</span>
-          </a>
+          <a href="/links" className="flex flex-col items-center py-2 text-[11px] leading-tight text-blue-700 font-bold">
+  <span className="text-[22px]">📋</span>
+  <span className="mt-0.5">Menu</span>
+</a>
+
         </div>
       </nav>
       {/* Dem de noi dung khong bi menu duoi che mat - nho them pb-20 vao <main> neu chua co */}
