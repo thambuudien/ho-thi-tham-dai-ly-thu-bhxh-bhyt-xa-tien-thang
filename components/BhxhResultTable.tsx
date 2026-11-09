@@ -72,18 +72,18 @@ export default function BhxhResultTable({
 
           <div className="flex justify-between items-center p-3 rounded-xl bg-blue-50 border border-blue-100 text-blue-900 font-bold text-sm">
             <span>Số tiền bà con thực nộp hằng tháng:</span>
-            <span className="font-mono text-base font-black text-blue-700">{formatVnd(netPay)} / tháng</span>
+            <span className="font-mono text-base font-black text-blue-700">{formatVnd(netPay)}</span>
           </div>
 
           <div className="flex justify-between items-center p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 font-bold text-sm">
             <div>
-              <p className="text-amber-900 font-black">Lương hưu dự kiến nhận lại:</p>
-              <p className="text- text-amber-700 font-normal mt-0.5 leading-relaxed">
+              <p className="text-amber-900 font-black">Lương hưu dự kiến nhận lại hằng tháng:</p>
+              {/* <p className="text- text-amber-700 font-normal mt-0.5 leading-relaxed">
                 * Đã nhân hệ số trượt giá <strong className="text-amber-900">{adjustmentFactor}</strong> để giữ giá trị đồng tiền.
                 Đây là số dự kiến để bà con tham khảo ạ.
-              </p>
+              </p> */}
             </div>
-            <span className="font-mono text-base font-black text-amber-600 shrink-0">{formatVnd(pension)} / tháng</span>
+            <span className="font-mono text-base font-black text-amber-600 shrink-0">{formatVnd(pension)}</span>
           </div>
         </div>
 

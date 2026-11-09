@@ -76,7 +76,7 @@ export default function BhxhCalculatorContainer() {
   };
 
   const metrics = calculateBhxhMetrics();
-  const formatVnd = (val: number) => new Intl.NumberFormat('vi-VN').format(val) + ' đ';
+  const formatVnd = (val: number) => new Intl.NumberFormat('vi-VN').format(val) + 'đ';
 
   return (
     <main className="container mx-auto px-4 py-8 max-w-4xl font-sans">
