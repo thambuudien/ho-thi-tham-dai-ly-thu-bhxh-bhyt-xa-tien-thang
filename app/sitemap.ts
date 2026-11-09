@@ -17,6 +17,9 @@ export default function sitemap() {
     { url: `${base}/bhxh`, lastModified: new Date() },
     { url: `${base}/bhyt`, lastModified: new Date() },
     { url: `${base}/blog`, lastModified: new Date() },
+    { url: `${base}/links`, lastModified: new Date() },
+    { url: `${base}/tinh-muc-dong-bhyt`, lastModified: new Date() },
+    { url: `${base}/tinh-luong-huu-bhxh`, lastModified: new Date() },
     ...blogs.map((slug) => ({ url: `${base}/blog/${slug}`, lastModified: new Date() })),
   ];
 }

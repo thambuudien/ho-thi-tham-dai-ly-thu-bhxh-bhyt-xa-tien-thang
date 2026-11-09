@@ -60,6 +60,15 @@ export default function TinhPhiBHYTPage() {
           </a>
         </div>
       </div>
+      <div className="text-center mt-8 mb-10 flex flex-col sm:flex-row justify-center gap-4">
+  <a href="/links" className="inline-block border border-gray-400 hover:bg-gray-100 text-gray-700 font-medium py-2 px-6 rounded-lg transition duration-200">
+    Quay về công cụ tính
+  </a> 
+  <a href="/tinh-luong-huu-bhxh" className="inline-block border border-blue-600 hover:bg-blue-50 text-blue-600 font-medium py-2 px-6 rounded-lg transition duration-200">
+    Sang công cụ tính tiền lương hưu BHXH tự nguyện
+  </a>
+</div>
+
       <Footer />
     </div>
   );

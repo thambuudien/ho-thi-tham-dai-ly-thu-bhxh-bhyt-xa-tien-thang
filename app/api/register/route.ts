@@ -21,13 +21,22 @@ export async function POST(request: Request) {
     const { fullName, birthDate, bhxhCccd, phoneNumber, cardExpiryHint } = body;
 
     if (!fullName || !birthDate || !bhxhCccd || !phoneNumber) {
-      return NextResponse.json({ errors: [{ message: 'Thiếu dữ liệu bắt buộc.' }] }, { status: 400 });
+      return NextResponse.json(
+        { errors: [{ message: 'Thiếu dữ liệu bắt buộc.' }] },
+        { status: 400 }
+      );
     }
 
-    const targetEndpoint = process.env.WORDPRESS_GRAPHQL_URL || 'https://hotham.vn/wordpress/rYkOy1HCCRD0JZZcrshVYaUR39QfcG15QWUC437BMM5Pk3gNLu';
+    const targetEndpoint =
+      process.env.WORDPRESS_GRAPHQL_URL ||
+      'https://hotham.vn/wordpress/rYkOy1HCCRD0JZZcrshVYaUR39QfcG15QWUC437BMM5Pk3gNLu';
     const targetToken = process.env.WORDPRESS_AUTH_TOKEN;
+    const secretToken = process.env.WORDPRESS_SECRET_TOKEN;
 
-    const headers: Record<string, string> = { 'Content-Type': 'application/json', 'lws-hotham-secret-token' : 'f4e18c5d6c2645e5981a837904c7b8d3' };
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    };
+    if (secretToken) headers['lws-hotham-secret-token'] = secretToken;
     if (targetToken) headers['Authorization'] = targetToken;
 
     const wpResponse = await fetch(targetEndpoint, {
@@ -38,11 +47,11 @@ export async function POST(request: Request) {
         variables: {
           input: {
             clientMutationId: `bhyt_${Date.now()}`,
-            fullName: fullName.trim(),
-            birthDate,
-            bhxhCccd: bhxhCccd.replace(/\s+/g, ''),
-            phoneNumber: phoneNumber.replace(/\s+/g, ''),
-            cardExpiryHint,
+            fullName: String(fullName).trim(),
+            birthDate: String(birthDate), // YYYY-MM-DD từ input type="date"
+            bhxhCccd: String(bhxhCccd).replace(/\s+/g, ''),
+            phoneNumber: String(phoneNumber).replace(/\s+/g, ''),
+            cardExpiryHint: cardExpiryHint || '',
             notes: 'Đăng ký tại Landing Page Đại lý Hồ Thị Thắm',
           },
         },
@@ -50,12 +59,19 @@ export async function POST(request: Request) {
     });
 
     const wpResult = await wpResponse.json();
+
     if (!wpResponse.ok || wpResult.errors) {
-      return NextResponse.json({ errors: wpResult.errors || [{ message: 'Lỗi đồng bộ WordPress.' }] }, { status: 500 });
+      return NextResponse.json(
+        { errors: wpResult.errors || [{ message: 'Lỗi đồng bộ WordPress.' }] },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json(wpResult);
   } catch {
-    return NextResponse.json({ errors: [{ message: 'Lỗi kết nối mạng nội bộ hệ thống.' }] }, { status: 500 });
+    return NextResponse.json(
+      { errors: [{ message: 'Lỗi kết nối mạng nội bộ hệ thống.' }] },
+      { status: 500 }
+    );
   }
 }
