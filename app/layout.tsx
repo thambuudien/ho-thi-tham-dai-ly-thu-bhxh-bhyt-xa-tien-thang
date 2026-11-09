@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-T9ZBGCYC48";
   return (
     <html lang="vi">
       <body className={`${beVietnamPro.variable} font-sans text-[15px] md:text-[16px] font-medium leading-relaxed antialiased bg-slate-50`}>
