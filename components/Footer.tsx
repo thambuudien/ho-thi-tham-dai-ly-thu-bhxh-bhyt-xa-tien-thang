@@ -23,9 +23,9 @@ export default function Footer() {
   <p className="mt-1.5">
     {CONTACT.diaChiNgan}
     {' '}•{' '}
-    Zalo / Gọi: <a href={`tel:${CONTACT.phoneNumber}`} className="underline font-bold text-white">{CONTACT.zaloDisplay}</a>
+    Zalo / Gọi: <a href={`tel:${CONTACT.zalo}`} className="underline font-bold text-white">{CONTACT.zaloDisplay}</a>
     {' '}•{' '}
-    <a href={`https://zalo.me/${CONTACT.zaloNumber}`} target="_blank" rel="noopener noreferrer" className="underline font-bold text-white">Nhắn Zalo cho em Thắm</a>
+    <a href={`https://zalo.me/${CONTACT.zalo}`} target="_blank" rel="noopener noreferrer" className="underline font-bold text-white">Nhắn Zalo cho em Thắm</a>
   </p>
   <p className="mt-1.5 text-white/60">
     Từ 01.01.2027 mức chuẩn nghèo lên 2.200.000đ - Bà con bấm vào trang Tính Lương Hưu để tính thử mức mới ạ.

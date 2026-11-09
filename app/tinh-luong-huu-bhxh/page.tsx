@@ -22,7 +22,7 @@ export const metadata = {
 };
 
 export default function TinhBhxhTuNguyenPage() {
-  const zaloLink = `https://zalo.me/${AGENT_CONFIG.contact.zaloPhone || '0978333963'}`;
+  const zaloLink = `https://zalo.me/${AGENT_CONFIG.contact.zaloNumber || '0978333963'}`;
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col justify-between">
