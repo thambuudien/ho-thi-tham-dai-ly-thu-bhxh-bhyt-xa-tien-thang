@@ -70,6 +70,15 @@ export default function TinhPhiBHYTPage() {
 </div>
 
       <Footer />
+      {/* NÚT NỔI DƯỚI CÙNG - MOBILE */}
+<div className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-t p-3 sm:hidden">
+  <a
+    href="/#form-nhac-han"
+    className="block w-full text-center bg-green-600 text-white font-bold py-3 rounded-full"
+  >
+    Đăng ký nhắc hạn - Miễn phí ạ
+  </a>
+</div>
     </div>
   );
 }
