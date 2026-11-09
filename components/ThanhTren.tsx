@@ -9,6 +9,7 @@ const MENU = [
   { href: "/bhxh", label: "BHXH - Lương hưu", icon: "👵" },
   { href: "/bhyt", label: "BHYT - Gia hạn", icon: "💳" },
   { href: "/blog", label: "Blog - Bà con đọc", icon: "📖" },
+  { href: "/links", label: "Tools - Công cụ tính", icon: "🧮" },
 ];
 
 export default function ThanhTren() {
@@ -73,10 +74,10 @@ export default function ThanhTren() {
               <span className="mt-0.5">{m.label.split(" - ")[0]}</span>
             </Link>
           ))}
-          <a href="/links" className="flex flex-col items-center py-2 text-[11px] leading-tight text-blue-700 font-bold">
-  <span className="text-[22px]">📋</span>
-  <span className="mt-0.5">Menu</span>
-</a>
+          {/* <a href="/links" className="flex flex-col items-center py-2 text-[11px] leading-tight text-blue-700 font-bold">
+  <span className="text-[22px]">🧮</span>
+  <span className="mt-0.5">Tính</span>
+</a> */}
 
         </div>
       </nav>

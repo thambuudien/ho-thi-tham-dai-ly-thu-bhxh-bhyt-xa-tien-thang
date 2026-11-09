@@ -1,17 +1,18 @@
-'use html';
 'use client';
 
 import React from 'react';
 import { Calculator, User, Users, Wallet, Copy, Check } from 'lucide-react';
 import { AGENT_CONFIG } from '@/config/agent';
 
+type SupportType = 'chinh_sach_100' | 'uu_dai_50' | 'doi_tuong_40' | 'chua_chac';
+
 interface BhxhCalculatorInputProps {
   incomeChoice: number;
   setIncomeChoice: (val: number) => void;
   gender: 'nam' | 'nu';
   setGender: (g: 'nam' | 'nu') => void;
-  supportType: 'chinh_sach_100' | 'uu_dai_50' | 'doi_tuong_40';
-  setSupportType: (t: 'chinh_sach_100' | 'uu_dai_50' | 'doi_tuong_40') => void;
+  supportType: SupportType;
+  setSupportType: (t: SupportType) => void;
   netPayload: { netPay: number; pension: number };
   formatVnd: (val: number) => string;
   copied: boolean;
@@ -31,8 +32,6 @@ export default function BhxhCalculatorInput({
   setCopied,
 }: BhxhCalculatorInputProps) {
 
-  // Danh sách các mốc thu nhập gợi ý phổ biến để bà con bấm chọn nhanh
-  // Danh sách các mốc thu nhập gợi ý phổ biến để bà con bấm chọn nhanh
   const suggestedIncomes = [
     1500000,
     3000000,
@@ -45,15 +44,17 @@ export default function BhxhCalculatorInput({
   ];
 
   const handleCopy = () => {
-    const supportText = 
-      supportType === 'chinh_sach_100' 
-        ? 'Hộ nghèo / Cận nghèo tại Hà Nội (Được hỗ trợ 100%)' 
-        : supportType === 'uu_dai_50' 
-          ? 'Cựu chiến binh, Cựu quân nhân/CAND/TNXP tại Hà Nội (Được hỗ trợ 50%)' 
-          : 'Đối tượng khác tại Hà Nội (Nhà nước 20% + TP hỗ trợ 20% = Hỗ trợ 40%)';
+    const supportText =
+      supportType === 'chinh_sach_100'
+        ? 'Hộ nghèo / Cận nghèo tại Hà Nội'
+        : supportType === 'uu_dai_50'
+          ? 'Cựu chiến binh, Cựu quân nhân / CAND / TNXP tại Hà Nội'
+          : supportType === 'doi_tuong_40'
+            ? 'Đối tượng khác tại Hà Nội (Nhà nước 20% + TP hỗ trợ 20%)'
+            : 'Chưa chắc thuộc nhóm nào - Nhờ chị Thắm kiểm tra giúp';
 
-    const text = `Dự tính BHXH Tự Nguyện - Đại lý chị Hồ Thị Thắm gửi bạn:\n- Mức thu nhập lựa chọn: ${formatVnd(incomeChoice)}/tháng\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp thực tế đợt này: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến nhận (Mốc đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nLiên hệ tư vấn làm sổ BHXH trực tuyến qua Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
-    
+    const text = `Nhờ chị Hồ Thị Thắm tính giúp BHXH Tự Nguyện:\n- Mức thu nhập con chọn: ${formatVnd(incomeChoice)}/tháng\n- Giới tính: ${gender === 'nam' ? 'Nam' : 'Nữ'}\n- Nhóm đối tượng: ${supportText}\n- Số tiền nộp dự kiến: ${formatVnd(netPayload.netPay)}/tháng\n- Lương hưu dự kiến (Đóng 15 năm): ${formatVnd(netPayload.pension)}/tháng\nNhờ chị kiểm tra giúp con xem có đúng không ạ. Zalo chị Thắm: ${AGENT_CONFIG.contact.phoneDisplay}`;
+
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -66,7 +67,7 @@ export default function BhxhCalculatorInput({
         <h5>Thông số tham gia BHXH</h5>
       </div>
 
-      {/* 1. THANH TRƯỢT VÀ NÚT BẤM GỢI Ý THU NHẬP ĐÓNG ĐỘNG */}
+      {/* 1. MỨC THU NHẬP */}
       <div className="space-y-3">
         <div className="flex justify-between items-center">
           <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
@@ -76,9 +77,8 @@ export default function BhxhCalculatorInput({
             {formatVnd(incomeChoice)} / tháng
           </span>
         </div>
-        
-        {/* ĐÃ CẬP NHẬT: Mức trần thanh kéo mở rộng kịch khung lên mốc 50.600.000 đ theo lương cơ sở mới */}
-        <input 
+
+        <input
           type="range"
           min="1500000"
           max="50600000"
@@ -87,14 +87,16 @@ export default function BhxhCalculatorInput({
           onChange={(e) => setIncomeChoice(parseInt(e.target.value) || 1500000)}
           className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600 focus:outline-none"
         />
-        <div className="flex justify-between text-[10px] text-slate-400 font-medium border-b pb-2">
+        <div className="flex justify-between text- text-slate-400 font-medium border-b pb-2">
           <span>Thấp nhất: {formatVnd(1500000)}</span>
           <span>Tối đa: {formatVnd(50600000)}</span>
         </div>
+        <p className="text- text-slate-500 leading-relaxed">
+          Bà con đóng mức cao hơn thì sau này lương hưu cao hơn. Mới bắt đầu thì cứ chọn mức sàn cũng được ạ.
+        </p>
 
-        {/* MỚI BỔ SUNG: Hàng nút bấm chọn nhanh các mốc thu nhập gợi ý */}
         <div className="space-y-1.5">
-          <p className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Chọn nhanh mức thu nhập gợi ý:</p>
+          <p className="text- font-bold text-slate-500 uppercase tracking-wider">Chọn nhanh mức thu nhập gợi ý:</p>
           <div className="flex flex-wrap gap-1.5">
             {suggestedIncomes.map((income) => {
               const isSelected = incomeChoice === income;
@@ -103,7 +105,7 @@ export default function BhxhCalculatorInput({
                   key={income}
                   type="button"
                   onClick={() => setIncomeChoice(income)}
-                  className={`px-2 py-1.5 rounded-xl font-mono font-bold text-[11px] border transition-all duration-150 ${
+                  className={`px-2 py-1.5 rounded-xl font-mono font-bold text- border transition-all duration-150 ${
                     isSelected
                       ? 'bg-blue-50 text-blue-700 border-blue-400 shadow-sm'
                       : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
@@ -117,7 +119,7 @@ export default function BhxhCalculatorInput({
         </div>
       </div>
 
-      {/* 2. CHỌN GIỚI TÍNH TÍNH TỶ LỆ HƯỞNG LƯƠNG HƯU CHUẨN LUẬT MỚI */}
+      {/* 2. GIỚI TÍNH - Nói đơn giản cho bà con hiểu */}
       <div className="space-y-1.5">
         <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
           <User className="w-3.5 h-3.5 text-slate-400 shrink-0" /> Giới tính người tham gia:
@@ -128,54 +130,59 @@ export default function BhxhCalculatorInput({
               key={g}
               type="button"
               onClick={() => setGender(g)}
-              className={`py-2 rounded-xl font-bold border transition text-[11px] ${
-                gender === g 
-                  ? 'bg-blue-600 text-white border-blue-600 shadow-sm' 
+              className={`py-2 rounded-xl font-bold border transition text- ${
+                gender === g
+                  ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
                   : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
               }`}
             >
-              {g === 'nam' ? 'Nam (Hưởng từ 40%)' : 'Nữ (Hưởng từ 45%)'}
+              {g === 'nam' ? 'Nam' : 'Nữ'}
             </button>
           ))}
         </div>
+        <p className="text- text-slate-500">Nam và Nữ có cách tính tỷ lệ hưởng hơi khác nhau, nên bà con chọn đúng giúp em ạ.</p>
       </div>
 
-      {/* 3. PHAN LOẠI NHÓM ĐỐI TƯỢNG ƯU ĐÃI ĐẶC THÙ THEO CHÍNH SÁCH HÀ NỘI */}
+      {/* 3. NHÓM ƯU ĐÃI - ĐÃ THÊM LỰA CHỌN "CHƯA CHẮC" + SỬA CHỮ 100% */}
       <div className="space-y-1.5">
         <label className="flex items-center gap-1.5 font-bold text-slate-700 uppercase tracking-wide">
-          <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" /> Nhóm ưu đãi chính sách đặc thù Hà Nội:
+          <Users className="w-3.5 h-3.5 text-slate-400 shrink-0" /> Bà con thuộc nhóm nào?
         </label>
         <div className="space-y-2">
           {[
-            { id: 'chinh_sach_100', label: 'Hộ nghèo & Hộ cận nghèo (Hỗ trợ tối đa 100%)' },
-            { id: 'uu_dai_50', label: 'CCB, Cựu quân nhân, CAND, TNXP thuộc CLB (Hỗ trợ 50%)' },
-            { id: 'doi_tuong_40', label: 'Các đối tượng khác cư trú tại Hà Nội (Hỗ trợ kép 40%)' },
+            { id: 'chua_chac' as SupportType, label: 'Em chưa chắc - Để chị Thắm kiểm tra giúp (Nên chọn cái này)', desc: 'Bà con cứ chọn cái này, em kiểm tra rồi báo lại cho chính xác ạ.' },
+            { id: 'chinh_sach_100' as SupportType, label: 'Hộ nghèo & Hộ cận nghèo', desc: 'Được hỗ trợ cao nhất, mức hỗ trợ tùy theo quyết định của xã.' },
+            { id: 'uu_dai_50' as SupportType, label: 'CCB, Cựu quân nhân, CAND, TNXP thuộc CLB', desc: 'Được hỗ trợ thêm theo chính sách của Hà Nội.' },
+            { id: 'doi_tuong_40' as SupportType, label: 'Các đối tượng khác ở Hà Nội', desc: 'Nhà nước hỗ trợ 20% + TP Hà Nội hỗ trợ thêm 20%.' },
           ].map((item) => {
             const isChecked = supportType === item.id;
             return (
-              <label 
-                key={item.id} 
-                className={`flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${
-                  isChecked 
-                    ? 'bg-blue-50/50 border-blue-200 font-semibold text-blue-900 shadow-sm' 
+              <label
+                key={item.id}
+                className={`flex items-start gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${
+                  isChecked
+                    ? 'bg-blue-50/50 border-blue-200 font-semibold text-blue-900 shadow-sm'
                     : 'border-slate-100 bg-slate-50/30 hover:bg-slate-50 text-slate-700'
                 }`}
               >
-                <input 
-                  type="radio" 
-                  name="supportType" 
-                  checked={isChecked} 
-                  onChange={() => setSupportType(item.id as any)} 
-                  className="w-3.5 h-3.5 text-blue-600 focus:ring-blue-500 border-slate-300 bg-white"
+                <input
+                  type="radio"
+                  name="supportType"
+                  checked={isChecked}
+                  onChange={() => setSupportType(item.id)}
+                  className="w-3.5 h-3.5 mt-0.5 text-blue-600 focus:ring-blue-500 border-slate-300 bg-white"
                 />
-                <span className="text-[11px] leading-tight">{item.label}</span>
+                <span>
+                  <span className="block text- leading-tight">{item.label}</span>
+                  <span className="block text- font-normal text-slate-500 mt-0.5 leading-relaxed">{item.desc}</span>
+                </span>
               </label>
             );
           })}
         </div>
       </div>
 
-      {/* 4. NÚT SAO CHÉP KẾT QUẢ GỬI ZALO */}
+      {/* 4. NÚT SAO CHÉP */}
       <button
         type="button"
         onClick={handleCopy}
@@ -184,15 +191,18 @@ export default function BhxhCalculatorInput({
         {copied ? (
           <>
             <Check className="w-3.5 h-3.5 text-emerald-400" />
-            <span>Đã sao chép kết quả thành công</span>
+            <span>Đã chép rồi - Bà con dán vào Zalo gửi cho em nhé</span>
           </>
         ) : (
           <>
             <Copy className="w-3.5 h-3.5" />
-            <span>Sao chép bảng tính gửi Zalo bà con</span>
+            <span>Chép kết quả này để gửi cho em Thắm</span>
           </>
         )}
       </button>
+      <p className="text-center text- text-slate-500 -mt-2">
+        Chép xong, bà con mở Zalo, dán vào tin nhắn gửi cho em là được ạ.
+      </p>
     </div>
   );
 }

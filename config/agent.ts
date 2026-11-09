@@ -23,8 +23,8 @@ export const AGENT_CONFIG = {
     bhytTitle: "Bảng Tính Mức Đóng BHYT Hộ Gia Đình 2026 - Lương Cơ Sở 2.530.000đ",
     bhytDesc: "Công cụ đối chiếu mức nộp tiền bảo hiểm y tế hộ gia đình tự động theo chu kỳ 3, 6, 12 tháng tại Hà Nội. Xem chi tiết mức giảm trừ công ích từ thành viên thứ 2.",
     
-    bhxhTitle: "Cách Tính Mức Đóng & Lương Hưu BHXH Tự Nguyện - Khẩu Hà Nội",
-    bhxhDesc: "Dự tính mức lương hưu trọn đời theo Luật mới đóng 15 năm tối thiểu. Tích hợp chính sách đặc thù TP. Hà Nội hỗ trợ 100% cho hộ nghèo và 40% cho đối tượng khác.",
+    bhxhTitle: "Tính thử lương hưu BHXH tự nguyện - Đóng bao nhiêu, hưởng bao nhiêu? | Chị Thắm Bưu Điện",
+    bhxhDesc: "Bấm thử xem đóng BHXH tự nguyện bao nhiêu 1 tháng, sau 15 năm hưởng lương hưu bao nhiêu. Đã trừ tiền Nhà nước & TP Hà Nội hỗ trợ. Nhắn Zalo 0978 333 963 để em Thắm tính đúng cho nhà mình.",
     
     linksTitle: "Cổng Tiện Ích An Sinh Trực Tuyến Xã Tiến Thắng - Chị Hồ Thị Thắm",
     linksDesc: "Tổng hợp các công cụ số hóa dịch vụ công ích: Nhắc hạn thẻ BHYT, Tính phí bảo hiểm hộ gia đình và dự toán lương hưu trọn đời của Đại lý bưu điện VHX Tự Lập."
